@@ -52,6 +52,17 @@ module.exports = {
       required: true,
       message: 'Application Name'
     },
+    appid: {
+        type: 'string',
+        required: true,
+        message: 'Application Id (e.g. com.example.yourapp)'
+    },
+    appver: {
+        type: 'string',
+        required: true,
+        message: 'Application Version',
+        default: '0.0.1'
+    },
     description: {
       type: 'string',
       required: false,
@@ -63,6 +74,11 @@ module.exports = {
       message: 'Select which Vue plugins to install',
       choices: ['axios', 'vue-electron', 'vue-router', 'vuex'],
       default: ['axios', 'vue-electron', 'vue-router', 'vuex']
+    },
+    usesass: {
+        type: 'confirm',
+        message: 'Use Sass / Scss?',
+        required: true
     },
     eslint: {
       type: 'confirm',
@@ -127,10 +143,10 @@ module.exports = {
     deps (plugins) {
       let output = ''
       let dependencies = {
-        'axios': '^0.16.1',
+        'axios': '^0.18.0',
         'vue-electron': '^1.0.6',
-        'vue-router': '^2.5.3',
-        'vuex': '^2.3.1'
+        'vue-router': '^3.0.1',
+        'vuex': '^3.0.1'
       }
 
       if (Object.keys(plugins).length > 0) output += ',\n'
